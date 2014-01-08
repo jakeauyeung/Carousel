@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>图片滚动演示</title>
+<link rel="stylesheet" href="../css/common/common.css" />
+<style type="text/css">
+/* css reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0}fieldset,img{border:0}:focus{outline:0}address,caption,cite,code,dfn,em,strong,th,var,optgroup{font-style:normal;font-weight:normal}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}abbr,acronym{border:0;font-variant:normal}input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit}code,kbd,samp,tt{font-size:100%}input,button,textarea,select{*font-size:100%}ol,ul{list-style:none}table{border-collapse:collapse;border-spacing:0}caption,th{text-align:left}sup,sub{font-size:100%;vertical-align:baseline}:link,:visited,ins{text-decoration:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}
+body{font: 12px/1.5 tahoma,arial,\5b8b\4f53; background: #fff;}
+.wp,.wrap,.wraper { width:980px; margin:0 auto;}
+img { vertical-align: top;}
+.clear-fix:after,.clear-fix:before,.cf:after,.cf:before{content:"";display:table;}
+.clear-fix:after,.cf:after{clear:both;}
+.clear-fix,.cf{*zoom:1;}
+
+/*slider css*/
+.bt-slider {border:1px solid #ccc;}
+.bt-slider {position: relative;width: 760px;margin: 20px auto;overflow: hidden; }
+.bt-slider .bt-track { position: relative; left: 0px; top: 0px; }
+.bt-slider .bt-list { overflow: hidden;display: block; margin: 0px; padding: 0px; z-index: 9999;}
+.bt-slider .bt-list .slide { display: block; list-style-type: none; float: left; }
+.bt-slider .bt-list .slide img { display: block; opacity: 0; }
+.bt-slider .bt-prev { position: absolute; background: url('sprite.png') -40px -40px no-repeat; display: block; height: 20px; width: 20px; text-indent: -9999px; top: 50%; margin-top: -27px; left: -32px; padding: 10px;opacity: 0; transition: opacity .25s, left .25s; -webkit-transition: opacity .25s, left .25s;}
+.bt-slider .bt-next { position: absolute; background: url('sprite.png') -90px -40px no-repeat; display: block; height: 20px; width: 20px; text-indent: -9999px; top: 50%; margin-top: -27px; right: -32px; padding: 10px;  opacity: 0; transition: opacity .25s, right .25s; -webkit-transition: opacity .25s, right .25s; }
+.bt-slider .bt-next.disabled { background-position: -90px -90px }
+.bt-slider .bt-prev.disabled { background-position: -40px -90px }
+.bt-slider:hover .bt-prev { transition: opacity .25s, left .25s; -webkit-transition: opacity .25s, left .25s; opacity: 1; left: 10px; z-index: 999999}
+.bt-slider:hover .bt-next { transition: opacity .25s, right .25s; -webkit-transition: opacity .25s, right .25s; opacity: 1; right: 10px; z-index: 999999}
+.bt-dots { position: absolute; bottom: 20px;right:20px;*zoom:1;list-style: none; display: block; text-align: center; padding: 0px;z-index: 999999}
+.bt-dots li { position: relative; display: block;float: left; background: url('sprite.png') -198px -89px no-repeat; height: 10px; width: 10px; text-indent: -9999px; margin: 0px 10px; padding: 0px; }
+.bt-dots li.active { background-position: -148px -89px }
+.bt-dots li a { display: block; height: 10px; width: 10px; }
+.bt-loading{ background: url('loader.gif') center center no-repeat; }
+</style>
+</head>
+<body>
+<div class="slider">
+<ul>
+<li><a href="#"><img src="http://cdn.bang5mai.com/upload/web/cmsphp/mslider/201312/fe9aedbd3291118192225.jpg"/></a></li>
+<li><a href="#"><img src="http://cdn.bang5mai.com/upload/web/cmsphp/mslider/201312/14069c78c511219202633.jpg"/></a></li>
+<li><a href="#"><img src="http://cdn.bang5mai.com/upload/web/cmsphp/mslider/201312/1aa836c22931623242833.jpg"/></a></li>
+</ul>
+</div>
+<script type="text/javascript" src="http://staticcdn.b5m.com/static/scripts/common/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="carousel.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.slider').b5mCarousel({
+        autoplay: true,
+        Points: true
+    });
+});
+</script>
+</body>
+</html>
