@@ -42,7 +42,6 @@ $.b5m.carousel = function(element,options) {
         base.currentLeft = null;
         base.direction = 1;
         base.Points = null;
-        base.loadIndex = 0;
         base.nextArrow = null;
         base.prevArrow = null;
         base.slideCount = null;
@@ -62,7 +61,6 @@ $.b5m.carousel = function(element,options) {
         base.autoPlayIterator = b5mBinder(base.autoPlayIterator, this);
 
         base.init = function() {
-
             if (!$(base.slider).hasClass('sliderInitialized')) {
                 $(base.slider).addClass('sliderInitialized');
                 base.setValues();
@@ -125,17 +123,16 @@ $.b5m.carousel = function(element,options) {
         if (base.options.Points === true) {
             base.Points.hide();
         }
-        base.slider.addClass('bt-loading');
     };
 
-    base.checkLoad = function() {
+    base.imgLoad = function() {
         var self = this, totalImages = null;
         if (base.options.reroll === true) {
             totalImages = self.slideCount + 2;
         } else {
             totalImages = self.slideCount;
         }
-        if (self.loadIndex === totalImages) {
+
             self.list.find('img').animate({ opacity: 1 }, base.options.speed, function() {
                 self.setPosition();
             });
@@ -147,16 +144,10 @@ $.b5m.carousel = function(element,options) {
             if (self.options.Points === true) {
                 self.Points.show();
             }
-            self.slider.removeClass('bt-loading');
             if (self.options.autoplay === true) {
                 self.autoPlay();
             }
-        }
-    };
 
-    base.stopLoad = function() {
-        base.loadIndex += 1;
-        base.checkLoad();
     };
 
     base.setValues = function() {
@@ -189,7 +180,7 @@ $.b5m.carousel = function(element,options) {
 
         if (base.options.reroll === true) {
             base.slides.first().clone().appendTo(base.slideTrack).addClass('cloned');
-            base.slides.last().clone().prependTo(base.slideTrack).addClass('cloned');
+            base.slides.last().clone().prependTo(base.slideTrack).addClass('cloned').addClass('cloned001');
         }
 
     };
@@ -224,7 +215,7 @@ $.b5m.carousel = function(element,options) {
             $('li a', base.Points).on(base.options.maction, {message: 'index'}, base.changeSlide);
         }
         $(window).on('resize', base.setPosition);
-        base.list.find('img').load(function() { self.stopLoad(); });
+        base.list.find('img').load(function() { self.imgLoad(); });
     };
 
     base.changeSlide = function(event) {
@@ -246,7 +237,6 @@ $.b5m.carousel = function(element,options) {
     base.updatePoints = function() {
         base.Points.find('li').removeClass('active');
         $(base.Points.find('li').get(base.currentSlide)).addClass('active');
-
     };
 
     base.slideHandler = function(index) {
