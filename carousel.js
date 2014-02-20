@@ -180,7 +180,7 @@ $.b5m.carousel = function(element,options) {
 
         if (base.options.reroll === true) {
             base.slides.first().clone().appendTo(base.slideTrack).addClass('cloned');
-            base.slides.last().clone().prependTo(base.slideTrack).addClass('cloned').addClass('cloned001');
+            base.slides.last().clone().prependTo(base.slideTrack).addClass('cloned');
         }
 
     };
